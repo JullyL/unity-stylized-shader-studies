@@ -185,42 +185,26 @@ Shader "Custom/Moebius3Pass_Fixed"
 
                 float dC = SampleLinearDepth01(uv);
                 float dL = SampleLinearDepth01(uv + float2(-texel.x, 0));
-                float dR = SampleLinearDepth01(uv + float2( texel.x, 0));
-                float dU = SampleLinearDepth01(uv + float2(0,  texel.y));
-                float dD = SampleLinearDepth01(uv + float2(0, -texel.y));
+                float dR = SampleLinearDepth01(uv + float2(texel.x, 0));
 
-                float depthEdge =
-                    abs(dC - dL) +
-                    abs(dC - dR) +
-                    abs(dC - dU) +
-                    abs(dC - dD);
-
-                depthEdge *= _DepthStrength;
-                float depthMask = step(_DepthThreshold, depthEdge);
+                float depthEdge = abs(dC - dL) + abs(dC - dR);
+                float depthMask = step(_DepthThreshold, depthEdge * _DepthStrength);
 
                 float3 nC = SampleSceneNormal(uv);
-                float3 nL = SampleSceneNormal(uv + float2(-texel.x, 0));
-                float3 nR = SampleSceneNormal(uv + float2( texel.x, 0));
-                float3 nU = SampleSceneNormal(uv + float2(0,  texel.y));
-                float3 nD = SampleSceneNormal(uv + float2(0, -texel.y));
+                float3 nR = SampleSceneNormal(uv + float2(texel.x, 0));
 
-                float normalEdge =
-                    (1.0 - dot(nC, nL)) +
-                    (1.0 - dot(nC, nR)) +
-                    (1.0 - dot(nC, nU)) +
-                    (1.0 - dot(nC, nD));
+                float normalEdge = 1.0 - dot(nC, nR);
+                float normalMask = step(_NormalThreshold, normalEdge * _NormalStrength);
 
-                normalEdge *= _NormalStrength;
-                float normalMask = step(_NormalThreshold, normalEdge);
+                float edge = max(depthMask, normalMask);
 
-                float finalMask = max(depthMask, normalMask);
-
-                float screenLuma = Luma(color);
-                float hatch = GetVideoStyleHatch(uv, screenLuma);
+                float3 l = normalize(float3(0.4, 0.8, 0.2));
+                float lighting = saturate(dot(nC, l));
+                float hatch = GetVideoStyleHatch(uv, lighting);
 
                 color = lerp(color, color * (1.0 - _HatchDarkness), hatch * _HatchStrength);
 
-                return lerp(float4(color,1), _LineColor, finalMask);
+                return lerp(float4(color,1), _LineColor, edge);
 
             }
 
