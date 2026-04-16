@@ -60,7 +60,7 @@ The core idea is to create rich layered motion and appearance effects through sh
 
 ## Suggested Folder Structure
 ```text
-RealTimeStylizedPondShader/
+realtime-stylized-pond-shader/
   README.md
   Docs/
     Proposal/
