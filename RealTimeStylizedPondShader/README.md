@@ -62,6 +62,9 @@ The core idea is to create rich layered motion and appearance effects through sh
 ```text
 RealTimeStylizedPondShader/
   README.md
+  Docs/
+    Proposal/
+    FinalReport/
   Textures/
     Water/
     LilyPads/
