@@ -97,5 +97,15 @@ realtime-stylized-pond-shader/
 - Data texture set (lily pad mask, depth map, paper grain, fish atlas).
 - Documentation (proposal, final report, implementation notes, media captures).
 
+## Week 1 Prototype
+The Week 1 prototype is generated inside the Unity project under `Assets/`.
+
+1. Open this folder in Unity `6000.3.9f1` or newer.
+2. Open `Assets/Scenes/Week1_WatercolorPondPrototype.unity`.
+3. Press Play to see the moving watercolor wash, lily reveal/bleed, and underwater koi motion.
+4. Tune `Assets/Materials/WatercolorPond_Master.mat` to adjust the exposed shader controls.
+
+If the scene needs to be rebuilt, run `Pond Prototype > Build Week 1 Prototype` from the Unity menu.
+
 ## Significance
 This project shows how shader-based, data-driven rendering can produce rich watercolor-style visuals without heavy geometry, simulation, or texture pipelines. UV channels become behavior carriers, masks/depth become timing and styling signals, and the shader acts as the "painter," bridging procedural design thinking with interactive, real-time visual expression rooted in a culturally inspired koi-and-lotus motif.

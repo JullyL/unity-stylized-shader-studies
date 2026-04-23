@@ -1,0 +1,240 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# 创建的文件:04.09.2023 10:55:43
+
+newmtl Lime__vray_water
+	Ns 10.0000
+	Ni 1.5000
+	d 0.0000
+	Tr 1.0000
+	Tf 0.0000 0.0000 0.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.0000 0.0000 0.0000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_bump C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Bump_BumpSlot.jpg
+	bump C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Bump_BumpSlot.jpg
+
+newmtl Lime__vray_bassein
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.0157 0.0196 0.0196
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Diff_BumpSlot.jpg
+	map_Kd C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Diff_BumpSlot.jpg
+	map_bump C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Bump_0_BumpSlot.jpg
+	bump C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Bump_0_BumpSlot.jpg
+
+newmtl Lime__vray_green_leaves
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5000 0.5000 0.5000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Diff_1_BumpSlot.jpg
+	map_Kd C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Diff_1_BumpSlot.jpg
+
+newmtl Lime__vray_pink_flow
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5000 0.5000 0.5000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Diff_2_BumpSlot.jpg
+	map_Kd C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Diff_2_BumpSlot.jpg
+
+newmtl Lime__vray_yellow_flow
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5000 0.5000 0.5000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Diff_3_BumpSlot.jpg
+	map_Kd C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Diff_3_BumpSlot.jpg
+
+newmtl Lime__vray_Material_309
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5000 0.5000 0.5000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Diff_patchy.jpg
+	map_Kd C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Diff_patchy.jpg
+	map_bump C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._scratched-metal-(6).jpg
+	bump C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._scratched-metal-(6).jpg
+
+newmtl Lime__vray_Oak_Matt_Antracite_Gray
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.1059 0.0784 0.0588
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._cmppmax_v2_9_1_12_d.jpg
+	map_Kd C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._cmppmax_v2_9_1_12_d.jpg
+	map_bump C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._cmppmax_v2_9_1_7_b.jpg
+	bump C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._cmppmax_v2_9_1_7_b.jpg
+
+newmtl Lime__vray_Oak_Matt_Light
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.4863 0.3725 0.2510
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._cmppmax_v2_9_1_1_d.jpg
+	map_Kd C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._cmppmax_v2_9_1_1_d.jpg
+	map_bump C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._cmppmax_v2_9_1_1_b.jpg
+	bump C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._cmppmax_v2_9_1_1_b.jpg
+
+newmtl Lime__vray_stone_kream
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5000 0.5000 0.5000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Material2.jpg
+	map_Kd C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Material2.jpg
+	map_bump C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Bump_Material2.jpg
+	bump C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Bump_Material2.jpg
+	map_refl C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Refl_Material2.jpg
+
+newmtl Lime__vray_stone_red
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5000 0.5000 0.5000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Material6.jpg
+	map_Kd C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Material6.jpg
+	map_bump C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Bump_Lime._Material6.jpg
+	bump C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Bump_Lime._Material6.jpg
+	map_refl C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Refl_Lime._Material6.jpg
+
+newmtl Lime__vray_stone
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5000 0.5000 0.5000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Material11.jpg
+	map_Kd C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Material11.jpg
+	map_bump C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Bump_Lime._Material11.jpg
+	bump C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Bump_Lime._Material11.jpg
+	map_refl C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Refl_Lime._Material11.jpg
+
+newmtl Lime__vray_stone_grey
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5000 0.5000 0.5000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Material10.jpg
+	map_Kd C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Material10.jpg
+	map_bump C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Bump_Lime._Material10.jpg
+	bump C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Bump_Lime._Material10.jpg
+	map_refl C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Refl_Lime._Material10.jpg
+
+newmtl Lime__vray_stone_grey_red
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5000 0.5000 0.5000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Material9.jpg
+	map_Kd C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Material9.jpg
+	map_bump C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Bump_Lime._Material9.jpg
+	bump C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Bump_Lime._Material9.jpg
+	map_refl C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Refl_Lime._Material9.jpg
+
+newmtl Lime__vray_stone_
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5000 0.5000 0.5000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Material7.jpg
+	map_Kd C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Material7.jpg
+	map_bump C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Bump_Lime._Material7.jpg
+	bump C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Bump_Lime._Material7.jpg
+	map_refl C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Refl_Lime._Material7.jpg
+
+newmtl Lime__vray_st
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 1.0000 0.0000 0.0000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Diff_53ffc873bbb938d69080078ce8cbf7e7.jpg
+	map_Kd C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Diff_53ffc873bbb938d69080078ce8cbf7e7.jpg
+	map_bump C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Bump_53ffc873bbb938d69080078ce8cbf7e7.jpg
+	bump C:\Users\Administrator\Desktop\2023景观水池C4D模型\maps\Lime._Bump_53ffc873bbb938d69080078ce8cbf7e7.jpg
