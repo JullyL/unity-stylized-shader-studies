@@ -2,12 +2,23 @@ Shader "Pond/WatercolorPondMaster"
 {
     Properties
     {
+        [Header(Water)]
         _WaterColor ("Water Color", Color) = (0.61, 0.83, 0.82, 0.82)
         _PigmentColor ("Pigment Color", Color) = (0.16, 0.39, 0.43, 1)
         _WashScale ("Wash Scale", Range(0.5, 18)) = 5
         _DriftSpeed ("Drift Speed", Range(0, 1)) = 0.08
+        _SurfaceOpacity ("Surface Opacity", Range(0.35, 1)) = 0.86
+
+        [Header(Paper)]
         _PaperGrainTexture ("Paper Grain Texture", 2D) = "white" {}
         _PaperStrength ("Paper Strength", Range(0, 1)) = 0.35
+
+        [Header(Depth)]
+        _DepthMap ("Depth Map", 2D) = "gray" {}
+        _DepthTint ("Depth Tint", Color) = (0.22, 0.48, 0.51, 1)
+        _DistortionStrength ("Distortion Strength", Range(0, 1)) = 0.2
+
+        [Header(Lily Pad)]
         _LilyMask ("Lily Mask", 2D) = "black" {}
         _LilyAlbedo ("Lily Albedo", 2D) = "black" {}
         _LilyMaskScale ("Lily Mask Scale", Float) = 1
@@ -16,13 +27,41 @@ Shader "Pond/WatercolorPondMaster"
         _LilyVeinCount ("Lily Vein Count", Float) = 6
         _LilyVeinIntensity ("Lily Vein Intensity", Range(0, 0.5)) = 0.1
         _LilyColorVariation ("Lily Color Variation", Range(0, 0.2)) = 0.08
-        _DepthMap ("Depth Map", 2D) = "gray" {}
-        _RevealAmount ("Reveal Amount", Range(0, 1)) = 1
-        _FishTexture ("Fish Texture", 2D) = "white" {}
+
+        [Header(Fish 1)]
+        _FishMask ("Fish Mask", 2D) = "black" {}
+        _FishAlbedo ("Fish Albedo", 2D) = "black" {}
         _FishSpeed ("Fish Speed", Range(-2, 2)) = 0.18
-        _DistortionStrength ("Distortion Strength", Range(0, 1)) = 0.2
-        _DepthTint ("Depth Tint", Color) = (0.22, 0.48, 0.51, 1)
-        _SurfaceOpacity ("Surface Opacity", Range(0.35, 1)) = 0.86
+        _FishScale ("Fish Scale", Range(1, 8)) = 2
+        _FishAngle ("Fish Angle", Range(-0.5, 0.5)) = 0.15
+        _FishCurveAmp ("Fish Curve Amp", Range(0, 0.4)) = 0.08
+        _FishWagSpeed ("Fish Wag Speed", Range(0, 15)) = 6
+        _FishWagAmp ("Fish Wag Amp", Range(-0.3, 0.3)) = 0.08
+        _FishOpacity ("Fish Opacity", Range(0, 1)) = 1.0
+
+        [Header(Fish 2)]
+        _Fish2Mask ("Fish 2 Mask", 2D) = "black" {}
+        _Fish2Albedo ("Fish 2 Albedo", 2D) = "black" {}
+        _Fish2Speed ("Fish 2 Speed", Range(-2, 2)) = -0.12
+        _Fish2Scale ("Fish 2 Scale", Range(1, 8)) = 3
+        _Fish2Angle ("Fish 2 Angle", Range(-0.5, 0.5)) = -0.1
+        _Fish2YOffset ("Fish 2 Y Offset", Range(-0.5, 0.5)) = 0.2
+        _Fish2CurveAmp ("Fish 2 Curve Amp", Range(0, 0.4)) = 0.1
+        _Fish2WagSpeed ("Fish 2 Wag Speed", Range(0, 15)) = 6
+        _Fish2WagAmp ("Fish 2 Wag Amp", Range(-0.3, 0.3)) = 0.08
+        _Fish2Opacity ("Fish 2 Opacity", Range(0, 1)) = 1.0
+
+        [Header(Fish 3)]
+        _Fish3Mask ("Fish 3 Mask", 2D) = "black" {}
+        _Fish3Albedo ("Fish 3 Albedo", 2D) = "black" {}
+        _Fish3Speed ("Fish 3 Speed", Range(-2, 2)) = -0.2
+        _Fish3Scale ("Fish 3 Scale", Range(1, 8)) = 3
+        _Fish3Angle ("Fish 3 Angle", Range(-0.5, 0.5)) = 0.1
+        _Fish3YOffset ("Fish 3 X Offset (track position)", Range(-0.5, 0.5)) = 0.0
+        _Fish3CurveAmp ("Fish 3 Curve Amp", Range(0, 0.4)) = 0.08
+        _Fish3WagSpeed ("Fish 3 Wag Speed", Range(0, 15)) = 5
+        _Fish3WagAmp ("Fish 3 Wag Amp", Range(-0.3, 0.3)) = -0.08
+        _Fish3Opacity ("Fish 3 Opacity", Range(0, 1)) = 1.0
     }
 
     SubShader
@@ -67,8 +106,18 @@ Shader "Pond/WatercolorPondMaster"
             SAMPLER(sampler_LilyAlbedo);
             TEXTURE2D(_DepthMap);
             SAMPLER(sampler_DepthMap);
-            TEXTURE2D(_FishTexture);
-            SAMPLER(sampler_FishTexture);
+            TEXTURE2D(_FishMask);
+            SAMPLER(sampler_FishMask);
+            TEXTURE2D(_FishAlbedo);
+            SAMPLER(sampler_FishAlbedo);
+            TEXTURE2D(_Fish2Mask);
+            SAMPLER(sampler_Fish2Mask);
+            TEXTURE2D(_Fish2Albedo);
+            SAMPLER(sampler_Fish2Albedo);
+            TEXTURE2D(_Fish3Mask);
+            SAMPLER(sampler_Fish3Mask);
+            TEXTURE2D(_Fish3Albedo);
+            SAMPLER(sampler_Fish3Albedo);
             TEXTURE2D(_PaperGrainTexture);
             SAMPLER(sampler_PaperGrainTexture);
 
@@ -81,7 +130,8 @@ Shader "Pond/WatercolorPondMaster"
                 float4 _LilyAlbedo_ST;
                 float4 _LilyMaskOffset;
                 float4 _DepthMap_ST;
-                float4 _FishTexture_ST;
+                float4 _FishMask_ST;
+                float4 _FishAlbedo_ST;
                 float4 _PaperGrainTexture_ST;
                 float _LilyMaskScale;
                 float _LilyRadialIntensity;
@@ -91,8 +141,33 @@ Shader "Pond/WatercolorPondMaster"
                 float _WashScale;
                 float _DriftSpeed;
                 float _PaperStrength;
-                float _RevealAmount;
                 float _FishSpeed;
+                float _FishScale;
+                float _FishAngle;
+                float4 _Fish2Mask_ST;
+                float4 _Fish2Albedo_ST;
+                float _Fish2Speed;
+                float _Fish2Scale;
+                float _Fish2Angle;
+                float _Fish2YOffset;
+                float _FishCurveAmp;
+                float _FishWagSpeed;
+                float _FishWagAmp;
+                float _FishOpacity;
+                float _Fish2CurveAmp;
+                float _Fish2WagSpeed;
+                float _Fish2WagAmp;
+                float _Fish2Opacity;
+                float4 _Fish3Mask_ST;
+                float4 _Fish3Albedo_ST;
+                float _Fish3Speed;
+                float _Fish3Scale;
+                float _Fish3Angle;
+                float _Fish3YOffset;
+                float _Fish3CurveAmp;
+                float _Fish3WagSpeed;
+                float _Fish3WagAmp;
+                float _Fish3Opacity;
                 float _DistortionStrength;
                 float _SurfaceOpacity;
             CBUFFER_END
@@ -185,7 +260,6 @@ Shader "Pond/WatercolorPondMaster"
                 color += (paper - 0.5) * _PaperStrength * 0.2;
 
                 float depth = SAMPLE_TEXTURE2D(_DepthMap, sampler_DepthMap, TRANSFORM_TEX(uv, _DepthMap)).r;
-                float reveal = smoothstep(depth - 0.09, depth + 0.09, _RevealAmount);
 
                 // Procedural UV distortion based on noise
                 float distortNoise1 = Fbm(uv * 14.0 + time * 0.12);
@@ -201,8 +275,8 @@ Shader "Pond/WatercolorPondMaster"
                 float albedoCoverage = smoothstep(0.04, 0.14, albedoLuma);
                 lilyMask *= albedoCoverage;
 
-                float lilyCore = smoothstep(0.5, 0.62, lilyMask) * reveal;
-                float lilySoft = smoothstep(0.16, 0.5, lilyMask) * reveal;
+                float lilyCore = smoothstep(0.45, 0.72, lilyMask);
+                float lilySoft = smoothstep(0.03, 0.8, lilyMask);
 
                 // Procedural radial shading for lily depth
                 float radialShade = RadialShade(lilySurfaceUv, 0.1, 0.45) * _LilyRadialIntensity;
@@ -219,17 +293,54 @@ Shader "Pond/WatercolorPondMaster"
                 lilyColor += veins * float3(0.08, 0.1, 0.05);
                 lilyColor += colorVar * _LilyColorVariation;
 
-                float2 fishUv = uv * float2(2.15, 1.35) + float2(time * _FishSpeed, sin(time * 0.41) * 0.08);
-                fishUv += uvDistortion * 0.1;
-                half4 fish = SAMPLE_TEXTURE2D(_FishTexture, sampler_FishTexture, TRANSFORM_TEX(frac(fishUv), _FishTexture));
-                float fishAlpha = fish.a * (1.0 - lilyCore * 0.85) * smoothstep(0.95, 0.25, depth) * 0.55;
-                float3 fishColor = lerp(fish.rgb, _DepthTint.rgb, 0.38 + depth * 0.25);
-                color = lerp(color, fishColor, fishAlpha);
+                float2 fishUV;
+                float fishScroll = uv.x * _FishScale - time * _FishSpeed;
+                fishUV.x = frac(fishScroll);
+                float fishTileCenterX = frac((floor(fishScroll) + 0.5 + time * _FishSpeed) / _FishScale);
+                float fishPathY = sin(fishTileCenterX * 6.28318) * _FishCurveAmp;
+                fishUV.y = uv.y * _FishScale + (1.0 - _FishScale) * 0.5 + uv.x * _FishAngle + fishPathY;
+                fishUV.y += sin(time * _FishWagSpeed) * _FishWagAmp * fishUV.x * fishUV.x;
+                float fishMask = SAMPLE_TEXTURE2D(_FishMask, sampler_FishMask, TRANSFORM_TEX(fishUV, _FishMask)).r;
+                float fishEdgeFade = smoothstep(0.0, 0.06, fishUV.x) * smoothstep(1.0, 0.94, fishUV.x);
+                fishMask *= fishEdgeFade;
+                float3 fishColor = SAMPLE_TEXTURE2D(_FishAlbedo, sampler_FishAlbedo, TRANSFORM_TEX(fishUV, _FishAlbedo)).rgb;
+                color = lerp(color, fishColor, fishMask * _FishOpacity);
 
-                color = lerp(color, lilyColor, lilyCore * 0.96);
+                float2 fish2UV;
+                float fish2Scroll = uv.x * _Fish2Scale - time * _Fish2Speed;
+                fish2UV.x = frac(fish2Scroll);
+                float fish2TileCenterX = frac((floor(fish2Scroll) + 0.5 + time * _Fish2Speed) / _Fish2Scale);
+                float fish2PathY = sin(fish2TileCenterX * 6.28318) * _Fish2CurveAmp;
+                fish2UV.y = uv.y * _Fish2Scale + (1.0 - _Fish2Scale) * 0.5 + uv.x * _Fish2Angle + _Fish2YOffset + fish2PathY;
+                fish2UV.y += sin(time * _Fish2WagSpeed) * _Fish2WagAmp * fish2UV.x * fish2UV.x;
+                float fish2Mask = SAMPLE_TEXTURE2D(_Fish2Mask, sampler_Fish2Mask, TRANSFORM_TEX(fish2UV, _Fish2Mask)).r;
+                float fish2EdgeFade = smoothstep(0.0, 0.06, fish2UV.x) * smoothstep(1.0, 0.94, fish2UV.x);
+                fish2Mask *= fish2EdgeFade;
+                float3 fish2Color = SAMPLE_TEXTURE2D(_Fish2Albedo, sampler_Fish2Albedo, TRANSFORM_TEX(fish2UV, _Fish2Albedo)).rgb;
+                color = lerp(color, fish2Color, fish2Mask * _Fish2Opacity);
+
+                float2 fish3UV;
+                float fish3Scroll = uv.y * _Fish3Scale - time * _Fish3Speed;
+                float fish3TexY = frac(fish3Scroll);
+                float fish3TileCenterY = frac((floor(fish3Scroll) + 0.5 + time * _Fish3Speed) / _Fish3Scale);
+                float fish3PathX = sin(fish3TileCenterY * 6.28318) * _Fish3CurveAmp;
+                float fish3TexX = uv.x * _Fish3Scale + (1.0 - _Fish3Scale) * 0.5 + _Fish3YOffset + uv.y * _Fish3Angle + fish3PathX;
+                // rotate UV 90° so the horizontal fish texture swims vertically on screen
+                fish3UV.x = fish3TexY;
+                fish3UV.y = 1.0 - fish3TexX;
+                float fish3UVclamped = saturate(fish3UV.x);
+                fish3UV.y += sin(time * _Fish3WagSpeed) * _Fish3WagAmp * fish3UVclamped * fish3UVclamped;
+                float fish3Mask = SAMPLE_TEXTURE2D(_Fish3Mask, sampler_Fish3Mask, TRANSFORM_TEX(fish3UV, _Fish3Mask)).r;
+                float fish3EdgeFade = smoothstep(0.0, 0.06, fish3UV.x) * smoothstep(1.0, 0.94, fish3UV.x);
+                float fish3BoundsH = smoothstep(0.0, 0.05, fish3TexX) * smoothstep(1.0, 0.95, fish3TexX);
+                fish3Mask *= fish3EdgeFade * fish3BoundsH;
+                float3 fish3Color = SAMPLE_TEXTURE2D(_Fish3Albedo, sampler_Fish3Albedo, TRANSFORM_TEX(fish3UV, _Fish3Albedo)).rgb;
+                color = lerp(color, fish3Color, fish3Mask * _Fish3Opacity);
+
+                color = lerp(color, lilyColor, max(lilyCore * 0.96, lilySoft * 0.45));
 
                 color = saturate(color);
-                float alpha = saturate(max(_SurfaceOpacity, max(lilySoft, fishAlpha * 0.65)));
+                float alpha = saturate(max(_SurfaceOpacity, max(lilySoft, fishMask * 0.65)));
                 return half4(color, alpha);
             }
             ENDHLSL

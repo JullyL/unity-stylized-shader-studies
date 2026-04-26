@@ -19,16 +19,40 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
-  m_LockedProperties: _LilyAlbedo
+  m_LockedProperties: _FishMask _LilyAlbedo
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _DepthMap:
-        m_Texture: {fileID: 2800000, guid: 44c85a7779bd94e568f49118f673b09b, type: 3}
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Fish2Albedo:
+        m_Texture: {fileID: 2800000, guid: 3ba6f004eec0f480e9220f97b3e21310, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Fish2Mask:
+        m_Texture: {fileID: 2800000, guid: 3ba6f004eec0f480e9220f97b3e21310, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Fish3Albedo:
+        m_Texture: {fileID: 2800000, guid: 58e9305d1494a406893517180b73e21e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Fish3Mask:
+        m_Texture: {fileID: 2800000, guid: 58e9305d1494a406893517180b73e21e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FishAlbedo:
+        m_Texture: {fileID: 2800000, guid: 4eaca38eb2f36470283e44c3903d288c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FishMask:
+        m_Texture: {fileID: 2800000, guid: 4eaca38eb2f36470283e44c3903d288c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FishTexture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 3ceb81e9e24ee409e8df3a241253bd4e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LilyAlbedo:
@@ -45,20 +69,45 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DistortionStrength: 0.24
+    - _DistortionStrength: 0
     - _DriftSpeed: 0.177
-    - _FishSpeed: 0.16
+    - _Fish2Angle: -0.428
+    - _Fish2AspectY: 1.5
+    - _Fish2CurveAmp: 0
+    - _Fish2Density: 0.633
+    - _Fish2Opacity: 1
+    - _Fish2Scale: 1.84
+    - _Fish2ScaleX: 3.02
+    - _Fish2ScaleY: 4.29
+    - _Fish2Speed: 0.3
+    - _Fish2WagAmp: -0.3
+    - _Fish2WagSpeed: 0
+    - _Fish2YOffset: -0.252
+    - _Fish3Angle: -0.5
+    - _Fish3CurveAmp: 0.151
+    - _Fish3Opacity: 1
+    - _Fish3Scale: 3.07
+    - _Fish3Speed: -0.46
+    - _Fish3WagAmp: -0.041
+    - _Fish3WagSpeed: 1.8
+    - _Fish3YOffset: 0.324
+    - _FishAngle: 0.43
+    - _FishCurveAmp: 0
+    - _FishOpacity: 1
+    - _FishScale: 1.33
+    - _FishSpeed: -0.14
+    - _FishWagAmp: -0.122
+    - _FishWagSpeed: 3.7
     - _LilyColorVariation: 0.08
     - _LilyMaskScale: 1
     - _LilyRadialIntensity: 0.3
     - _LilyVeinCount: 6
     - _LilyVeinIntensity: 0.1
     - _PaperStrength: 0.582
-    - _RevealAmount: 1
     - _SurfaceOpacity: 0.82
     - _WashScale: 7.7
     m_Colors:
-    - _DepthTint: {r: 0.19, g: 0.43, b: 0.47, a: 1}
+    - _DepthTint: {r: 0.0990566, g: 0.35495284, b: 0.3962264, a: 1}
     - _LilyMaskOffset: {r: 0, g: 0, b: 0, a: 0}
     - _PigmentColor: {r: 0.12, g: 0.33, b: 0.38, a: 1}
     - _WaterColor: {r: 0.57, g: 0.8, b: 0.78, a: 0.86}

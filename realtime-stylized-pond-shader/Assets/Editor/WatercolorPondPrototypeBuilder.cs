@@ -153,7 +153,6 @@ public static class WatercolorPondPrototypeBuilder
         material.SetFloat("_WashScale", 5.8f);
         material.SetFloat("_DriftSpeed", 0.07f);
         material.SetFloat("_PaperStrength", 0.42f);
-        material.SetFloat("_RevealAmount", 1f);
         material.SetFloat("_FishSpeed", 0.16f);
         material.SetFloat("_DistortionStrength", 0.24f);
         material.SetFloat("_SurfaceOpacity", 0.82f);
