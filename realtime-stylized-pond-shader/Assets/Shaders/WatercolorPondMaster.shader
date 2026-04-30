@@ -13,9 +13,7 @@ Shader "Pond/WatercolorPondMaster"
         _PaperGrainTexture ("Paper Grain Texture", 2D) = "white" {}
         _PaperStrength ("Paper Strength", Range(0, 1)) = 0.35
 
-        [Header(Depth)]
-        _DepthMap ("Depth Map", 2D) = "gray" {}
-        _DepthTint ("Depth Tint", Color) = (0.22, 0.48, 0.51, 1)
+        [Header(Surface)]
         _DistortionStrength ("Distortion Strength", Range(0, 1)) = 0.2
 
         [Header(Lily Pad)]
@@ -24,8 +22,6 @@ Shader "Pond/WatercolorPondMaster"
         _LilyMaskScale ("Lily Mask Scale", Float) = 1
         _LilyMaskOffset ("Lily Mask Offset", Vector) = (0, 0, 0, 0)
         _LilyRadialIntensity ("Lily Radial Intensity", Range(0, 1)) = 0.3
-        _LilyVeinCount ("Lily Vein Count", Float) = 6
-        _LilyVeinIntensity ("Lily Vein Intensity", Range(0, 0.5)) = 0.1
         _LilyColorVariation ("Lily Color Variation", Range(0, 0.2)) = 0.08
         _LilyPadOpacity ("Lily Pad Opacity", Range(0, 1)) = 1.0
 
@@ -105,8 +101,6 @@ Shader "Pond/WatercolorPondMaster"
             SAMPLER(sampler_LilyMask);
             TEXTURE2D(_LilyAlbedo);
             SAMPLER(sampler_LilyAlbedo);
-            TEXTURE2D(_DepthMap);
-            SAMPLER(sampler_DepthMap);
             TEXTURE2D(_FishMask);
             SAMPLER(sampler_FishMask);
             TEXTURE2D(_FishAlbedo);
@@ -126,18 +120,14 @@ Shader "Pond/WatercolorPondMaster"
             CBUFFER_START(UnityPerMaterial)
                 float4 _WaterColor;
                 float4 _PigmentColor;
-                float4 _DepthTint;
                 float4 _LilyMask_ST;
                 float4 _LilyAlbedo_ST;
                 float4 _LilyMaskOffset;
-                float4 _DepthMap_ST;
                 float4 _FishMask_ST;
                 float4 _FishAlbedo_ST;
                 float4 _PaperGrainTexture_ST;
                 float _LilyMaskScale;
                 float _LilyRadialIntensity;
-                float _LilyVeinCount;
-                float _LilyVeinIntensity;
                 float _LilyColorVariation;
                 float _LilyPadOpacity;
                 float _WashScale;
@@ -220,25 +210,6 @@ Shader "Pond/WatercolorPondMaster"
                 return smoothstep(outerRadius, innerRadius, r);
             }
 
-            // Procedural veins using radial lines
-            float ProceduralVeins(float2 uv, float veinCount, float intensity)
-            {
-                float2 p = uv - 0.5;
-                float r = length(p);
-                float angle = atan2(p.y, p.x);
-                
-                // Create radial vein pattern
-                float veins = sin(angle * veinCount);
-                veins = abs(veins);
-                veins = smoothstep(0.5, 0.2, veins);
-                
-                // Fade toward center and edges
-                veins *= smoothstep(0.05, 0.25, r);
-                veins *= smoothstep(0.5, 0.35, r);
-                
-                return veins * intensity;
-            }
-
             Varyings Vert(Attributes input)
             {
                 Varyings output;
@@ -257,11 +228,11 @@ Shader "Pond/WatercolorPondMaster"
                 float wash = Fbm(driftA) * 0.68 + Fbm(driftB) * 0.32;
 
                 float paper = SAMPLE_TEXTURE2D(_PaperGrainTexture, sampler_PaperGrainTexture, TRANSFORM_TEX(uv, _PaperGrainTexture)).r;
+                
                 float3 color = lerp(_WaterColor.rgb, _PigmentColor.rgb, saturate(wash * 0.56));
+                
                 color *= lerp(0.9, 1.12, paper);
                 color += (paper - 0.5) * _PaperStrength * 0.2;
-
-                float depth = SAMPLE_TEXTURE2D(_DepthMap, sampler_DepthMap, TRANSFORM_TEX(uv, _DepthMap)).r;
 
                 // Procedural UV distortion based on noise
                 float distortNoise1 = Fbm(uv * 14.0 + time * 0.12);
@@ -283,16 +254,12 @@ Shader "Pond/WatercolorPondMaster"
                 // Procedural radial shading for lily depth
                 float radialShade = RadialShade(lilySurfaceUv, 0.1, 0.45) * _LilyRadialIntensity;
 
-                // Procedural veins for texture variation
-                float veins = ProceduralVeins(lilySurfaceUv, _LilyVeinCount, _LilyVeinIntensity);
-
                 // Noise-based color variation
                 float colorVar = Fbm(lilySurfaceUv * 8.0 + time * 0.05) - 0.5;
 
                 // Combine lily color with procedural effects
                 float3 lilyColor = lilyAlbedo * lerp(0.9, 1.12, wash);
                 lilyColor += radialShade * float3(0.15, 0.2, 0.1);
-                lilyColor += veins * float3(0.08, 0.1, 0.05);
                 lilyColor += colorVar * _LilyColorVariation;
 
                 float2 fishUV;

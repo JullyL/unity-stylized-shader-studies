@@ -23,10 +23,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _DepthMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _Fish2Albedo:
         m_Texture: {fileID: 2800000, guid: 3ba6f004eec0f480e9220f97b3e21310, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -101,13 +97,10 @@ Material:
     - _LilyColorVariation: 0.08
     - _LilyMaskScale: 1
     - _LilyRadialIntensity: 0.3
-    - _LilyVeinCount: 6
-    - _LilyVeinIntensity: 0.1
     - _PaperStrength: 0.582
     - _SurfaceOpacity: 0.82
     - _WashScale: 7.7
     m_Colors:
-    - _DepthTint: {r: 0.0990566, g: 0.35495284, b: 0.3962264, a: 1}
     - _LilyMaskOffset: {r: 0, g: 0, b: 0, a: 0}
     - _PigmentColor: {r: 0.12, g: 0.33, b: 0.38, a: 1}
     - _WaterColor: {r: 0.57, g: 0.8, b: 0.78, a: 0.86}

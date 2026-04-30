@@ -1,5 +1,28 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4049679827092262228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07be244f3743a44dc917568d6aa4cfa1, type: 3}
+  m_Name: WatercolorOutlineFeature
+  m_EditorClassIdentifier: Assembly-CSharp::WatercolorOutlineFeature
+  m_Active: 1
+  settings:
+    depthWeight: 1.38
+    normalWeight: 0.52
+    thresholdLow: 0.0006
+    thresholdHigh: 0.06
+    outlineStrength: 0.416
+    edgeDarken: 0.213
+    noiseStrength: 0.4
+    noiseScale: 3
+    renderPassEvent: 550
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26,7 +49,8 @@ MonoBehaviour:
     probeVolumeBlendStatesCS: {fileID: 7200000, guid: b9a23f869c4fd45f19c5ada54dd82176, type: 3}
   m_RendererFeatures:
   - {fileID: 7833122117494664109}
-  m_RendererFeatureMap: ad6b866f10d7b46c
+  - {fileID: -4049679827092262228}
+  m_RendererFeatureMap: ad6b866f10d7b46cacb21944a7a5ccc7
   m_UseNativeRenderPass: 1
   xrSystemData: {fileID: 0}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}

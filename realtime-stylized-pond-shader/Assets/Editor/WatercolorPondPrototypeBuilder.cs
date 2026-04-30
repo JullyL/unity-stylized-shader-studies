@@ -18,7 +18,6 @@ public static class WatercolorPondPrototypeBuilder
     private const string BottomMaterialPath = "Assets/Materials/PondBottom.mat";
     private const string PaperPath = "Assets/Textures/Water/Placeholder_PaperGrain.png";
     private const string LilyMaskPath = "Assets/Textures/LilyPads/Placeholder_LilyMask.png";
-    private const string DepthPath = "Assets/Textures/Water/Placeholder_DepthGradient.png";
     private const string FishPath = "Assets/Textures/Fish/Placeholder_KoiAtlas.png";
 
     [MenuItem("Pond Prototype/Build Week 1 Prototype")]
@@ -149,7 +148,6 @@ public static class WatercolorPondPrototypeBuilder
 
         material.SetColor("_WaterColor", new Color(0.57f, 0.8f, 0.78f, 0.86f));
         material.SetColor("_PigmentColor", new Color(0.12f, 0.33f, 0.38f, 1f));
-        material.SetColor("_DepthTint", new Color(0.19f, 0.43f, 0.47f, 1f));
         material.SetFloat("_WashScale", 5.8f);
         material.SetFloat("_DriftSpeed", 0.07f);
         material.SetFloat("_PaperStrength", 0.42f);
@@ -158,7 +156,6 @@ public static class WatercolorPondPrototypeBuilder
         material.SetFloat("_SurfaceOpacity", 0.82f);
         material.SetTexture("_PaperGrainTexture", AssetDatabase.LoadAssetAtPath<Texture2D>(PaperPath));
         material.SetTexture("_LilyMask", AssetDatabase.LoadAssetAtPath<Texture2D>(LilyMaskPath));
-        material.SetTexture("_DepthMap", AssetDatabase.LoadAssetAtPath<Texture2D>(DepthPath));
         material.SetTexture("_FishTexture", AssetDatabase.LoadAssetAtPath<Texture2D>(FishPath));
 
         EditorUtility.SetDirty(material);
@@ -258,7 +255,6 @@ public static class WatercolorPondPrototypeBuilder
     {
         WriteTexture(PaperPath, GeneratePaperGrain(512), TextureWrapMode.Repeat, false);
         WriteTexture(LilyMaskPath, GenerateLilyMask(512), TextureWrapMode.Clamp, false);
-        WriteTexture(DepthPath, GenerateDepthGradient(512), TextureWrapMode.Clamp, false);
         WriteTexture(FishPath, GenerateFishAtlas(512), TextureWrapMode.Clamp, true);
     }
 
@@ -295,26 +291,6 @@ public static class WatercolorPondPrototypeBuilder
                 float fiber = Mathf.PerlinNoise(uvx * 34f, uvy * 7f) * 0.55f + Mathf.PerlinNoise(uvx * 82f + 11f, uvy * 59f) * 0.45f;
                 float grain = Mathf.Clamp01(0.42f + fiber * 0.46f + RandomHash(x, y) * 0.12f);
                 texture.SetPixel(x, y, new Color(grain, grain, grain, 1f));
-            }
-        }
-        texture.Apply();
-        return texture;
-    }
-
-    private static Texture2D GenerateDepthGradient(int size)
-    {
-        Texture2D texture = new Texture2D(size, size, TextureFormat.RGBA32, false);
-        for (int y = 0; y < size; y++)
-        {
-            for (int x = 0; x < size; x++)
-            {
-                float uvx = x / (float)(size - 1);
-                float uvy = y / (float)(size - 1);
-                float dx = uvx - 0.52f;
-                float dy = uvy - 0.48f;
-                float radial = Mathf.Clamp01(Mathf.Sqrt(dx * dx + dy * dy) * 1.35f);
-                float value = Mathf.Clamp01(uvy * 0.58f + radial * 0.42f);
-                texture.SetPixel(x, y, new Color(value, value, value, 1f));
             }
         }
         texture.Apply();
