@@ -268,7 +268,9 @@ Shader "Pond/WatercolorPondMaster"
                 float fishTileCenterX = frac((floor(fishScroll) + 0.5 + time * _FishSpeed) / _FishScale);
                 float fishPathY = sin(fishTileCenterX * 6.28318) * _FishCurveAmp;
                 fishUV.y = uv.y * _FishScale + (1.0 - _FishScale) * 0.5 + uv.x * _FishAngle + fishPathY;
+
                 fishUV.y += sin(time * _FishWagSpeed) * _FishWagAmp * fishUV.x * fishUV.x;
+                
                 float fishMask = SAMPLE_TEXTURE2D(_FishMask, sampler_FishMask, TRANSFORM_TEX(fishUV, _FishMask)).r;
                 float fishEdgeFade = smoothstep(0.0, 0.06, fishUV.x) * smoothstep(1.0, 0.94, fishUV.x);
                 fishMask *= fishEdgeFade;
